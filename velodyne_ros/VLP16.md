@@ -8,6 +8,8 @@ The VLP-16's default IP address is 192.168.1.201
 
 Connect power to interface box, ethernet from computer to interface box.
 
+#### Connecting to LIDAR ####
+
 Check if you can connect to it by entering this IP address in a web browser's URL field.
 
 If you cannot yet connect, follow these steps:
@@ -30,6 +32,8 @@ sudo ifconfig eth0 192.168.3.X
  sudo route add 192.168.1.201 eth0
  ```
  
+ #### Installing ROS Drivers ####
+ 
  Once you can view the browser interface at 192.168.1.201, proceed to setting up ROS drivers.  Replace 'kinetic' with your distribution if you are not using ros-kinetic.
  
  ```bash
@@ -43,10 +47,14 @@ sudo ifconfig eth0 192.168.3.X
  
  If you're getting errors above, try creating a fresh workspace just for this package.
  
+  #### Running & Vieweing Data ####
+ 
  To run, from within your workspace:
  ```bash
  roslaunch velodyne_pointcloud VLP16_points.launch
  # verify pointcloud is being published to velodyne_points
  rostopic echo velodyne_points
  ```
+ 
+ To view the data, open rviz, set frame to "velodyne" and add the topic "velodyne_points".
  
